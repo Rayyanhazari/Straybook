@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10130f">
+  <meta name="description" content="Your personal street-cat Pokédex. Photograph cats, name them, and build your collection.">
+  <title>CatDex — Street Cat Collector</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand-mark">🐈</div>
+      <div><div class="brand">Cat<span>Dex</span></div><div class="eyebrow">FIELD GUIDE · VOL. 001</div></div>
+      <div class="hunter-badge"><i></i> CAT HUNTER</div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">YOUR NEIGHBORHOOD. YOUR DISCOVERIES.</div>
+      <h1>Every cat has<br>a <span>story.</span></h1>
+      <p>Spot a street cat. Scan it. Give it a name. Build your own living cat encyclopedia.</p>
+    </section>
+
+    <section class="stats">
+      <div class="stat"><div class="eyebrow">CATS DISCOVERED</div><strong id="total">0</strong></div>
+      <div class="stat"><div class="eyebrow">FIELD NOTES</div><strong id="notesCount">0</strong></div>
+    </section>
+
+    <section class="panel scanner">
+      <div class="section-heading">
+        <div><div class="eyebrow">FIELD SCANNER</div><h2>Encounter a cat</h2></div>
+        <span class="heading-icon">📡</span>
+      </div>
+      <div class="camera-stage" id="cameraStage">
+        <video id="cameraVideo" autoplay playsinline muted hidden></video>
+        <img id="photoPreview" alt="Cat photo preview" hidden>
+        <div class="placeholder" id="placeholder"><div>🐈‍⬛</div><strong>Waiting for a wild encounter...</strong><p>Open the camera or choose a photo.</p></div>
+        <div class="scan-frame" id="scanFrame" hidden><div></div></div>
+      </div>
+      <p class="camera-message" id="cameraMessage" aria-live="polite">Camera access is requested only when you press Open scanner.</p>
+      <div class="button-row">
+        <button class="button primary" id="cameraButton" type="button">◎ Open scanner</button>
+        <button class="button secondary" id="captureButton" type="button" disabled>◉ Capture photo</button>
+      </div>
+      <label class="field-label" for="photoInput">OR CHOOSE A PHOTO</label>
+      <input class="file-input" id="photoInput" type="file" accept="image/*" capture="environment">
+
+      <div class="form-divider"></div>
+      <div class="eyebrow form-eyebrow">NEW CAT ENTRY</div>
+      <form id="catForm">
+        <label class="field-label" for="catName">Nickname <span>*</span></label>
+        <input id="catName" maxlength="40" required placeholder="e.g. Shadow, Biscuit, Sir Meows">
+        <div class="two-fields">
+          <div><label class="field-label" for="catAppearance">Coat / appearance</label><input id="catAppearance" maxlength="60" placeholder="Orange tabby"></div>
+          <div><label class="field-label" for="catLocation">Where spotted</label><input id="catLocation" maxlength="80" placeholder="Near the tea stall"></div>
+        </div>
+        <label class="field-label" for="catNotes">Pokédex entry / personality</label>
+        <textarea id="catNotes" rows="3" maxlength="500" placeholder="Shy, one white paw, hangs around the gate..."></textarea>
+        <button class="button primary save-button" type="submit">＋ Add to my CatDex</button>
+        <p class="form-message" id="formMessage" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="collection-section">
+      <div class="collection-heading">
+        <div><div class="eyebrow">YOUR PERSONAL ENCYCLOPEDIA</div><h2>Cat collection</h2></div>
+        <span class="count-pill" id="entryCount">0 ENTRIES</span>
+      </div>
+      <div class="filters" role="group" aria-label="Filter cats">
+        <button class="filter active" data-filter="all">All cats</button>
+        <button class="filter" data-filter="photo">With photos</button>
+        <button class="filter" data-filter="notes">With notes</button>
+      </div>
+      <div class="cat-grid" id="catGrid"></div>
+      <div class="storage-tools">
+        <button class="button secondary" id="exportButton" type="button">Export backup</button>
+        <label class="button secondary import-label" for="importInput">Import backup</label>
+        <input id="importInput" type="file" accept="application/json,.json" hidden>
+      </div>
+      <p class="storage-note" id="storageMessage">Your collection is stored in this browser on this device.</p>
+    </section>
+    <footer>CATDEX V1 · MADE FOR CURIOUS CAT TRAINERS<br><span>Observe kindly. Never disturb a cat to get a photo.</span></footer>
+  </main>
+
+  <dialog id="catDialog" class="cat-dialog">
+    <div id="dialogPhoto"></div>
+    <div class="dialog-content">
+      <div class="eyebrow">CATDEX FIELD RECORD</div>
+      <h2 id="dialogName"></h2>
+      <div id="dialogInfo" class="dialog-info"></div>
+      <div class="dialog-actions">
+        <button class="button primary" id="renameButton" type="button">Rename cat</button>
+        <button class="button secondary" id="closeDialog" type="button">Close</button>
+      </div>
+      <button class="button danger-button" id="deleteButton" type="button">Remove entry</button>
+    </div>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>

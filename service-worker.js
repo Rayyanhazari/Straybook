@@ -1,4 +1,4 @@
-const CACHE_NAME = "pawdex-cute-ui-v3-mobile-fix-shell";
+const CACHE_NAME = "pawdex-clean-gallery-fix-v5-shell";
 const APP_SHELL = ["./", "./index.html", "./style.css", "./app.js", "./manifest.json", "./icons/catdex-192.png", "./icons/catdex-512.png", "./icons/catdex-maskable-512.png"];
 
 self.addEventListener("install", event => {

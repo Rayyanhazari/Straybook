@@ -199,7 +199,9 @@
     $("photoInput").value = "";
   });
 
-  $("photoInput").addEventListener("change", event => {
+  $("galleryButton").addEventListener("click", () => $("photoInput").click());
+
+  function handleSelectedPhoto(event) {
     const file = event.target.files?.[0];
     if (!file) return;
     if (!file.type.startsWith("image/")) {
@@ -214,7 +216,9 @@
     reader.onload = () => compressImage(reader.result, setPhoto);
     reader.onerror = () => { $("cameraMessage").textContent = "Could not read that file."; };
     reader.readAsDataURL(file);
-  });
+    event.target.value = "";
+  }
+  $("photoInput").addEventListener("change", handleSelectedPhoto);
 
   $("catForm").addEventListener("submit", event => {
     event.preventDefault();

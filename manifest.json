@@ -1,14 +1,14 @@
 {
   "id": "./",
   "name": "CatDex \u2014 Street Cat Collector",
-  "short_name": "CatDex",
+  "short_name": "Pawdex",
   "description": "Photograph street cats, give them nicknames, and build your own collection.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#10130f",
-  "theme_color": "#10130f",
+  "background_color": "#fff0f5",
+  "theme_color": "#fff0f5",
   "icons": [
     {
       "src": "icons/catdex-192.png",

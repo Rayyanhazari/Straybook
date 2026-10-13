@@ -1,4 +1,4 @@
-# CatDex V1 🐈
+# Pawdex — Cute UI Update 🐈
 
 A free, local-first street-cat collector. Take a photo, give the cat a nickname, record where you spotted it, and build your own collection.
 
